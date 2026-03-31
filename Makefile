@@ -6,7 +6,7 @@ build:
 run:
 	podman run --rm -it localhost/hypoclaude
 
-./out/claude
+./out/claude:
 	podman create --name tmp-build-hypoclaude --replace localhost/hypoclaude:latest
 	podman cp tmp-build-hypoclaude:/home/claude ./out/claude
 	podman rm tmp-build-hypoclaude
