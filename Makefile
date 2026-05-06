@@ -1,7 +1,7 @@
 .PHONY: build run clean
 
 build:
-	podman build -thypoclaude .
+	podman build --no-cache -thypoclaude .
 
 run:
 	podman run --rm -it localhost/hypoclaude
