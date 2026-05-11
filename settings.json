@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Agent",
+      "Bash(awk *)",
+      "Bash(dig *)",
+      "Bash(dnf *)",
+      "Bash(find *)",
+      "Bash(git *)",
+      "Bash(helm lint *)",
+      "Bash(helm template *)",
+      "Bash(helm version *)",
+      "Bash(ls *)",
+      "Bash(mkdir *)",
+      "Bash(mv *)",
+      "Bash(nslookup *)",
+      "Bash(sed *)",
+      "Bash(uv *)",
+      "Bash(wc *)",
+      "Bash(which *)",
+      "Bash(yq *)",
+      "Edit(//tmp/**)",
+      "Edit(//workspaces/**)",
+      "Glob",
+      "Grep",
+      "Read(//home/claude/**)",
+      "Read(//workspaces/**)",
+      "Read(~/**)",
+      "WebFetch(domain:registry.terraform.io)",
+      "WebFetch(domain:www.rubydoc.info)"
+    ]
+  },
+  "effortLevel": "high",
+  "theme": "light"
+}
