@@ -1,4 +1,4 @@
-.PHONY: build run clean
+.PHONY: build run clean settings.json
 
 build:
 	podman build --no-cache -thypoclaude .
@@ -14,4 +14,7 @@ run:
 clean:
 	rm -rf ./out/claude
 
-rebuild: build ./out/claude
+./out/claude/settings.json:
+	cp ./settings.json ./out/claude/.claude/settings.json
+
+rebuild: clean build ./out/claude ./out/claude/settings.json
