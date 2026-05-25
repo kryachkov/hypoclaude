@@ -4,7 +4,7 @@ ENV COLORTERM=truecolor
 
 RUN dnf update -y
 RUN dnf install -y bat curl fzf git helm man ripgrep zoxide nvim zsh tree \
-  bind-utils yq
+  bind-utils yq procps-ng
 
 RUN echo "claude ALL=(ALL) NOPASSWD: /usr/bin/dnf" > /etc/sudoers.d/claude
 
