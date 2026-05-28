@@ -10,6 +10,7 @@
       "Bash(helm lint *)",
       "Bash(helm template *)",
       "Bash(helm version *)",
+      "Bash(jq *)",
       "Bash(ls *)",
       "Bash(mkdir *)",
       "Bash(mv *)",
