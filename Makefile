@@ -17,4 +17,8 @@ clean:
 ./out/claude/settings.json:
 	cp ./settings.json ./out/claude/.claude/settings.json
 
-rebuild: clean build ./out/claude ./out/claude/settings.json
+./out/claude/.config/nvim/init.lua: ./init.lua
+	mkdir -p ./out/claude/.config/nvim
+	cp ./init.lua ./out/claude/.config/nvim/init.lua
+
+rebuild: clean build ./out/claude ./out/claude/settings.json ./out/claude/.config/nvim/init.lua
