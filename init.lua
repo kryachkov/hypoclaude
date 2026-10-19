@@ -9,8 +9,9 @@ opt.signcolumn = "yes"
 opt.cursorline = true
 opt.termguicolors = true
 opt.scrolloff = 8
-opt.wrap = false
-opt.colorcolumn = "100"
+opt.wrap = true
+opt.linebreak = true
+opt.colorcolumn = "80"
 
 opt.expandtab = true
 opt.shiftwidth = 2
