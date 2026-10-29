@@ -32,9 +32,11 @@ cclaude() {
   esac
 
   local -a env_args
-  local env_file="${CCLAUDE_ENV_VARS_DIR}/${basename}.env"
-  if [[ -n "$CCLAUDE_ENV_VARS_DIR" && -f "$env_file" ]]; then
-    env_args=(--env-file "$env_file")
+  if [[ -n "$CCLAUDE_ENV_VARS_DIR" ]]; then
+    local env_file
+    for env_file in "${CCLAUDE_ENV_VARS_DIR}/_common.env" "${CCLAUDE_ENV_VARS_DIR}/${basename}.env"; do
+      [[ -f "$env_file" ]] && env_args+=(--env-file "$env_file")
+    done
   fi
 
   podman run --rm -it \
@@ -50,7 +52,11 @@ that appeared after `make rebuild`. I suggest moving it outside of the repo so
 it is possible to rebuild `cclaude` image and homedir without losing data
 in claude's home directory
 
-Optionally set `CCLAUDE_ENV_VARS_DIR` to a directory with per-project env files.
-If `$CCLAUDE_ENV_VARS_DIR/<project_name>.env` exists (where `<project_name>` is
-the basename of the directory passed to `cclaude`), it is passed to the
-container via `podman run --env-file`.
+Optionally set `CCLAUDE_ENV_VARS_DIR` to a directory with env files, which are
+passed to the container via `podman run --env-file`:
+
+- `$CCLAUDE_ENV_VARS_DIR/_common.env` — loaded for every project
+- `$CCLAUDE_ENV_VARS_DIR/<project_name>.env` — loaded for one project, where
+  `<project_name>` is the basename of the directory passed to `cclaude`
+
+Both files are optional. If a variable is set in both, the project file wins.
