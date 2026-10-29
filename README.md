@@ -31,14 +31,26 @@ cclaude() {
       ;;
   esac
 
+  local -a env_args
+  local env_file="${CCLAUDE_ENV_VARS_DIR}/${basename}.env"
+  if [[ -n "$CCLAUDE_ENV_VARS_DIR" && -f "$env_file" ]]; then
+    env_args=(--env-file "$env_file")
+  fi
+
   podman run --rm -it \
     "${mount_args[@]}" \
+    "${env_args[@]}" \
     --workdir "/workspaces/${basename}" \
     localhost/cclaude:latest
 }
 ```
 
-and set `cclaude_HOME_DIR` env variable to absolute path `out/claude` directory
+and set `CCLAUDE_HOME_DIR` env variable to absolute path `out/claude` directory
 that appeared after `make rebuild`. I suggest moving it outside of the repo so
 it is possible to rebuild `cclaude` image and homedir without losing data
 in claude's home directory
+
+Optionally set `CCLAUDE_ENV_VARS_DIR` to a directory with per-project env files.
+If `$CCLAUDE_ENV_VARS_DIR/<project_name>.env` exists (where `<project_name>` is
+the basename of the directory passed to `cclaude`), it is passed to the
+container via `podman run --env-file`.
