@@ -3,7 +3,7 @@ FROM registry.fedoraproject.org/fedora:44
 ENV COLORTERM=truecolor
 ENV EDITOR=nvim
 
-RUN dnf update -y && dnf install -y autoconf bat bind-utils bzip2 curl fzf gcc gdbm-devel git helm jq libffi-devel libyaml-devel make man ncurses-devel nvim openssl-devel patch perl-FindBin procps-ng rbenv readline-devel ripgrep rust tree yq zlib-ng-compat-devel zoxide zsh shellcheck xxd kubernetes1.37-client
+RUN dnf update -y && dnf install -y autoconf bat bind-utils bzip2 curl fzf gcc gdbm-devel git helm jq libffi-devel libyaml-devel make man ncurses-devel nvim openssl-devel patch perl-FindBin procps-ng rbenv readline-devel ripgrep rust tree yq zlib-ng-compat-devel zoxide zsh shellcheck xxd kubernetes1.37-client gh
 
 ARG TARGETARCH
 ARG TALOSCTL_VERSION=v1.14.2
